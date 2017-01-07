@@ -32,6 +32,8 @@
 #include <wx/button.h>
 #include <wx/panel.h>
 #include <wx/sizer.h>
+#include <wx/wfstream.h>
+#include <wx/dcbuffer.h>
 ////Header Include End
 
 ////Dialog Style Start
@@ -53,9 +55,13 @@ class deformacjeFrm : public wxFrame
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
-		wxButton *WxButton2;
-		wxScrollBar *WxScrollBar6;
+		wxBitmap WxBitmap1;
+        wxBitmap photo;
+        wxImage MyImage;
+        wxStaticText *WxStaticText8;
+        wxButton *WxButton2;
 		wxStaticText *WxStaticText7;
+		wxScrollBar *WxScrollBar6;
 		wxBoxSizer *WxBoxSizer9;
 		wxScrollBar *WxScrollBar5;
 		wxStaticText *WxStaticText6;
@@ -81,6 +87,10 @@ class deformacjeFrm : public wxFrame
 		wxPanel *WxPanel1;
 		wxBoxSizer *WxBoxSizer1;
 		////GUI Control Declaration End
+		void Load(wxCommandEvent& event);
+		void Saving(wxCommandEvent& event);
+		void UpdateDrawing(wxUpdateUIEvent& event);
+		void drawing();
 		
 	private:
 		//Note: if you receive any error with these enum IDs, then you need to
