@@ -35,9 +35,8 @@ END_EVENT_TABLE()
 deformacjeFrm::deformacjeFrm(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &position, const wxSize& size, long style)
 : wxFrame(parent, id, title, position, size, style)
 {
-	CreateGUIControls();
-    wxInitAllImageHandlers();
-    //wxImage::AddHandler( new wxJPEGHandler );    
+	wxInitAllImageHandlers();
+	CreateGUIControls();   
 }
 
 deformacjeFrm::~deformacjeFrm()
@@ -79,7 +78,7 @@ void deformacjeFrm::CreateGUIControls()
 	WxBoxSizer4 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer4, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText2 = new wxStaticText(this, ID_WXSTATICTEXT2, _("Obrót poziom"), wxPoint(5, 5), wxDefaultSize, 0, _("Obrót poziom"));
+	WxStaticText2 = new wxStaticText(this, ID_WXSTATICTEXT2, _("ObrÃ³t poziom"), wxPoint(5, 5), wxDefaultSize, 0, _("ObrÃ³t poziom"));
 	WxBoxSizer4->Add(WxStaticText2, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxScrollBar2 = new wxScrollBar(this, ID_WXSCROLLBAR2, wxPoint(52, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar2"));
@@ -89,7 +88,7 @@ void deformacjeFrm::CreateGUIControls()
 	WxBoxSizer5 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer5, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, _("Obrót pion"), wxPoint(5, 5), wxDefaultSize, 0, _("Obrót pion"));
+	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, _("ObrÃ³t pion"), wxPoint(5, 5), wxDefaultSize, 0, _("ObrÃ³t pion"));
 	WxBoxSizer5->Add(WxStaticText3, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxScrollBar3 = new wxScrollBar(this, ID_WXSCROLLBAR3, wxPoint(42, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar3"));
@@ -99,7 +98,7 @@ void deformacjeFrm::CreateGUIControls()
 	WxBoxSizer6 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer6, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, _("Obrót poziom"), wxPoint(5, 5), wxDefaultSize, 0, _("Obrót poziom"));
+	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, _("ObrÃ³t poziom"), wxPoint(5, 5), wxDefaultSize, 0, _("ObrÃ³t poziom"));
 	WxBoxSizer6->Add(WxStaticText4, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxEdit1 = new wxTextCtrl(this, ID_WXEDIT1, _("x"), wxPoint(92, 5), wxSize(121, 19), 0, wxDefaultValidator, _("x"));
@@ -153,51 +152,48 @@ void deformacjeFrm::CreateGUIControls()
 }
 
 void deformacjeFrm::Load(wxCommandEvent& event){
-    wxString s;
-    wxFileDialog dialog(this, _("Open JPEG file"), "", "", "JPEG files (*.jpg)|*.jpg", wxFD_OPEN|wxFD_FILE_MUST_EXIST);
-    if (dialog.ShowModal() == wxID_CANCEL)
-        return; 
-    wxFileInputStream input_stream(dialog.GetPath());
-    if (!input_stream.IsOk() )
-        wxLogError("Nie mo¿na za³adowaæ obrazka");
-    else{
-        MyImage.LoadFile(input_stream, wxBITMAP_TYPE_JPEG);
-        photo = wxBitmap(MyImage); 
-    }
+
+	wxFileDialog dialog(this, _("Zaladuj obrazek"), "", "", "JPEG files (*.jpg)|*.jpg", wxFD_OPEN|wxFD_FILE_MUST_EXIST);
+	if (dialog.ShowModal() == wxID_CANCEL) {
+		return; 
+	}
+	wxFileInputStream input_stream(dialog.GetPath());
+	if (!input_stream.IsOk() ) {
+		wxLogError("Nie mozna zaladowa obrazka");
+	} else {
+		img.LoadFile(input_stream, wxBITMAP_TYPE_JPEG);
+		printf("asdf");
+	}
+	
 }
 
 void deformacjeFrm::Saving(wxCommandEvent& event){
-    wxFileDialog zapisz(this, wxString("Zapisz plik"), wxEmptyString, wxEmptyString, wxString("JPEG files (*.jpg) | *.jpg"), wxFD_SAVE);
-   
-    if(zapisz.ShowModal() == wxID_OK)
-    {
-        wxString sciezka = zapisz.GetPath();
-        //WxBitmap1.SaveFile(sciezka,wxBITMAP_TYPE_BMP);
-    }
+
+	if(img.Ok()) {
+		wxImage::AddHandler(new wxPNGHandler);
+		wxFileDialog dialog(this, _("Zapisz obrazek"), "", "", "PNG (*.png)|*.png", wxFD_SAVE);
+		int arg = dialog.ShowModal();
+		if (arg == wxID_CANCEL){
+			return;
+		} else if (arg == wxID_OK) {
+			img.SaveFile(dialog.GetPath(), wxBITMAP_TYPE_PNG);
+		} else {
+			wxMessageBox("Zapis nie powiÃ³dl sie!");
+		}
+	}
     
 }
 
 void deformacjeFrm::UpdateDrawing(wxUpdateUIEvent& event){
-    drawing();
+    	if(img.Ok()){
+		drawing();
+	}
 }
 
 void deformacjeFrm::drawing(){
-    /*WxBitmap1.Create(WxPanel1->GetSize());
-    //wxClientDC dc(WxPanel1);
-    wxMemoryDC dc(WxBitmap1);
-    dc.Clear();
-    //dc.Clear();*/
-    //wxBitmap bitmap(MyImage);   
-    //wxClientDC dcClient(WxPanel1);
-    //wxBufferedDC dc(&dcClient);
-    /*WxBitmap1.Create(WxPanel1->GetSize());
-    wxMemoryDC dc(WxBitmap1);
-    dc.Clear();*/
-    wxClientDC dc2(WxPanel1);
-    dc2.DrawBitmap(photo,0,0);
-    //dc.SelectObject(wxNullBitmap);
-    //dc.DrawBitmap(bitmap, 0, 0);
-    Refresh();
+	view = img.Copy();
+	view.Rescale(WxPanel1->GetSize().x, WxPanel1->GetSize().y);
+    	dc->DrawBitmap(wxBitmap(view), 0, 0, true);
     
 }
 
