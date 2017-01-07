@@ -9,6 +9,8 @@
 ///------------------------------------------------------------------
 
 #include "deformacjeFrm.h"
+#include <wx/dcbuffer.h>
+#include <wx/wfstream.h>
 
 //Do not add custom headers between
 //Header Include Start and Header Include End
@@ -149,6 +151,13 @@ void deformacjeFrm::CreateGUIControls()
 	Center();
 	
 	////GUI Items Creation End
+	dc = new wxClientDC(WxPanel1);
+	
+}
+
+void deformacjeFrm::OnClose(wxCloseEvent& event)
+{
+	Destroy();
 }
 
 void deformacjeFrm::Load(wxCommandEvent& event){
@@ -185,19 +194,15 @@ void deformacjeFrm::Saving(wxCommandEvent& event){
 }
 
 void deformacjeFrm::UpdateDrawing(wxUpdateUIEvent& event){
-    	if(img.Ok()){
+    if(img.Ok()){
 		drawing();
 	}
 }
 
 void deformacjeFrm::drawing(){
+    
 	view = img.Copy();
 	view.Rescale(WxPanel1->GetSize().x, WxPanel1->GetSize().y);
-    	dc->DrawBitmap(wxBitmap(view), 0, 0, true);
+    dc->DrawBitmap(wxBitmap(view), 0, 0, true);
     
-}
-
-void deformacjeFrm::OnClose(wxCloseEvent& event)
-{
-	Destroy();
 }
