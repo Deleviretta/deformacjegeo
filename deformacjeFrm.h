@@ -46,6 +46,15 @@ class deformacjeFrm : public wxFrame
 {
 	private:
 		DECLARE_EVENT_TABLE();
+		Matrix4 RotateZ(double alpha);
+		Matrix4 RotateX(double alpha);
+		Matrix4 RotateY(double alpha);
+		Matrix4 norma(double z);
+		Matrix4 scale(double Sx,double Sy, double Sz);
+		Matrix4 SkewX(double a,double b);
+		Matrix4 Shift3D(double Tx, double Ty,double Tz);
+		Matrix4 ToWindow(double xmax, double ymax);
+		Matrix4 To2D();
 		
 	public:
 		deformacjeFrm(wxWindow *parent, wxWindowID id = 1, const wxString &title = wxT("deformacje"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = deformacjeFrm_STYLE);
