@@ -206,6 +206,104 @@ void deformacjeFrm::Saving(wxCommandEvent& event){
     
 }
 
+Matrix4 deformacjeFrm::RotateZ(double alpha)
+{
+    Matrix4 temp;
+   temp.data[0][0] =  temp.data[1][1] = cos(alpha);
+    temp.data[0][1] = -sin(alpha);
+    temp.data[1][0] = sin(alpha);
+    temp.data[2][2] = 1;
+    return temp;
+}
+
+Matrix4 deformacjeFrm::RotateX(double alpha) {	
+   Matrix4 temp;
+temp.data[0][0] = 1.0;
+temp.data[1][1] =  temp.data[2][2] = cos(alpha);
+    temp.data[1][2] = -sin(alpha);
+    temp.data[2][1] = sin(alpha);
+    return temp;
+}
+Matrix4 deformacjeFrm::RotateY(double alpha) {	
+ Matrix4 temp;
+ temp.data[0][0] = temp.data[2][2] = cos(alpha);
+ temp.data[2][0] = -sin(alpha);
+ temp.data[0][2] = sin(alpha);
+ temp.data[1][1] = 1.0;
+   return temp;
+}	
+
+
+Matrix4 deformacjeFrm::norma(double z){
+Matrix4 tmp;
+tmp.data[0][0] = 1.0/z;
+ tmp.data[1][1] = 1.0/z;
+tmp.data[3][3] = 1.0/z;
+ return tmp;
+}
+
+Matrix4 deformacjeFrm::scale(double Sx,double Sy, double Sz){
+Matrix4 tmp;
+tmp.data[0][0] = Sx;
+ tmp.data[1][1] = Sy;
+tmp.data[2][2] = Sz;
+ return tmp;
+} 
+
+Matrix4 deformacjeFrm::SkewX(double a,double b){
+Matrix4 tmp;
+tmp.data[0][0] = tmp.data[1][1] = tmp.data[2][2] = 1;
+tmp.data[1][0] = b;
+tmp.data[0][1] = a;
+
+ return tmp;
+}
+
+Matrix4 deformacjeFrm::Shift3D(double Tx, double Ty,double Tz) 
+{
+    Matrix4 shift;
+    shift.data[0][0] = 1.0;
+    shift.data[0][3] = Tx ;
+    shift.data[1][1] = 1.0;
+    shift.data[1][3] = Ty;
+    shift.data[2][2] = 1.0;
+    shift.data[2][3] = Tz ;
+    return shift;
+}
+
+Matrix4  deformacjeFrm::ToWindow(double xmax, double ymax){
+    Matrix4 t1,t2;
+    /*double sx = xmax/2;
+    double sy = ymax/-2;
+    t1.data[0][0] = sx;
+    t1.data[0][2] = 0 - sx*(-1.0);
+    t1.data[1][1] = sy;
+    t1.data[1][2] = 0- sy*(1.0);
+    
+    t2.data[0][3] = xmax/2.0;
+     t2.data[0][0] = t2.data[1][1] = 1.0;
+    t2.data[1][3] = ymax/2.0;
+    return t2*t1;*/
+    t1.data[0][0] = 1;
+    t1.data[1][1] = 1;
+    t1.data[0][3] = xmax/2.0; // przesuwamyc calosc na srodek okna (w/2, h/2);
+    t1.data[1][3] = ymax/2.0;
+    return t1;
+}
+
+/**rzutowanie  z 3D na 2D 
+ * d - odleglosc kamery od obrazu
+ */
+Matrix4 deformacjeFrm::To2D() {
+	
+    Matrix4 tmp;
+	tmp.data[0][0] = 1.0;
+    tmp.data[1][1] = 1.0;
+    tmp.data[3][2] = 0; // 1.0/ d -> 0 , bo d->inf 
+    tmp.data[3][3] = 1.0 ;
+	return tmp;
+}
+
 void deformacjeFrm::UpdateDrawing(wxUpdateUIEvent& event){
     if(img.Ok()){
 		drawing();
