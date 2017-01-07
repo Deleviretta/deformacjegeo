@@ -125,6 +125,9 @@ class deformacjeFrm : public wxFrame
 	private:
 		void OnClose(wxCloseEvent& event);
 		void CreateGUIControls();
+		wxImage img;
+		wxImage view;
+		wxClientDC *dc;
 };
 
 #endif
