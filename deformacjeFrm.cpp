@@ -12,6 +12,7 @@
 #include <wx/dcbuffer.h>
 #include <wx/wfstream.h>
 
+
 //Do not add custom headers between
 //Header Include Start and Header Include End
 //wxDev-C++ designer will remove them
@@ -59,12 +60,12 @@ void deformacjeFrm::CreateGUIControls()
 	this->SetAutoLayout(true);
 
 	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 15), wxSize(500, 500));
-	WxBoxSizer1->Add(WxPanel1, 0, wxALIGN_CENTER | wxALL, 5);
+	WxBoxSizer1->Add(WxPanel1, 0, wxEXPAND | wxALL, 5);
 
 	WxBoxSizer2 = new wxBoxSizer(wxVERTICAL);
 	WxBoxSizer1->Add(WxBoxSizer2, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxButton1 = new wxButton(this, ID_WXBUTTON1, _("Wczytaj obrazek"), wxPoint(5, 7), wxSize(75, 25), 0, wxDefaultValidator, _("Wczytaj obrazek"));
+	WxButton1 = new wxButton(this, ID_WXBUTTON1, _("Wczytaj obrazek"), wxPoint(5, 7), wxSize(85, 25), 0, wxDefaultValidator, _("Wczytaj obrazek"));
 	WxBoxSizer2->Add(WxButton1, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
@@ -80,7 +81,7 @@ void deformacjeFrm::CreateGUIControls()
 	WxBoxSizer4 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer4, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText2 = new wxStaticText(this, ID_WXSTATICTEXT2, _("Obr贸t poziom"), wxPoint(5, 5), wxDefaultSize, 0, _("Obr贸t poziom"));
+	WxStaticText2 = new wxStaticText(this, ID_WXSTATICTEXT2, _("Obr髏 poziom"), wxPoint(5, 5), wxDefaultSize, 0, _("Obr髏 poziom"));
 	WxBoxSizer4->Add(WxStaticText2, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxScrollBar2 = new wxScrollBar(this, ID_WXSCROLLBAR2, wxPoint(52, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar2"));
@@ -90,7 +91,7 @@ void deformacjeFrm::CreateGUIControls()
 	WxBoxSizer5 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer5, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, _("Obr贸t pion"), wxPoint(5, 5), wxDefaultSize, 0, _("Obr贸t pion"));
+	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, _("Obr髏 pion"), wxPoint(5, 5), wxDefaultSize, 0, _("Obr髏 pion"));
 	WxBoxSizer5->Add(WxStaticText3, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxScrollBar3 = new wxScrollBar(this, ID_WXSCROLLBAR3, wxPoint(42, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar3"));
@@ -100,7 +101,7 @@ void deformacjeFrm::CreateGUIControls()
 	WxBoxSizer6 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer6, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, _("Obr贸t poziom"), wxPoint(5, 5), wxDefaultSize, 0, _("Obr贸t poziom"));
+	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, _("Obr髏 poziom"), wxPoint(5, 5), wxDefaultSize, 0, _("Obr髏 poziom"));
 	WxBoxSizer6->Add(WxStaticText4, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxEdit1 = new wxTextCtrl(this, ID_WXEDIT1, _("x"), wxPoint(92, 5), wxSize(121, 19), 0, wxDefaultValidator, _("x"));
@@ -152,7 +153,20 @@ void deformacjeFrm::CreateGUIControls()
 	
 	////GUI Items Creation End
 	dc = new wxClientDC(WxPanel1);
-	
+    WxScrollBar1->SetScrollbar(0, 1, 361, 1,true);
+	WxScrollBar1->Enable(true);
+	WxScrollBar2->SetScrollbar(0, 1, 361, 1,true);
+	WxScrollBar2->Enable(true);
+	WxScrollBar3->SetScrollbar(0, 1, 361, 1,true);
+	WxScrollBar3->Enable(true);
+	WxScrollBar4->SetScrollbar(0, 1, 361, 1,true);
+	WxScrollBar4->Enable(true);
+	WxScrollBar5->SetScrollbar(0, 1, 361, 1,true);
+	WxScrollBar5->Enable(true);
+	wxWindow::GetSize(&xPoint,&yPoint);
+	xPoint/=2.;
+	yPoint/=2.;
+	//yPoint = wxWindow.GetSize().y;
 }
 
 void deformacjeFrm::OnClose(wxCloseEvent& event)
@@ -171,7 +185,6 @@ void deformacjeFrm::Load(wxCommandEvent& event){
 		wxLogError("Nie mozna zaladowa obrazka");
 	} else {
 		img.LoadFile(input_stream, wxBITMAP_TYPE_JPEG);
-		printf("asdf");
 	}
 	
 }
@@ -187,7 +200,7 @@ void deformacjeFrm::Saving(wxCommandEvent& event){
 		} else if (arg == wxID_OK) {
 			img.SaveFile(dialog.GetPath(), wxBITMAP_TYPE_PNG);
 		} else {
-			wxMessageBox("Zapis nie powi贸dl sie!");
+			wxMessageBox("Zapis nie powi骴l sie!");
 		}
 	}
     

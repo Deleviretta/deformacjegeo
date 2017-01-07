@@ -33,13 +33,11 @@
 #include <wx/button.h>
 #include <wx/panel.h>
 #include <wx/sizer.h>
-#include <wx/wfstream.h>
-#include <wx/dcbuffer.h>
 ////Header Include End
 
 ////Dialog Style Start
 #undef deformacjeFrm_STYLE
-#define deformacjeFrm_STYLE wxCAPTION | wxSYSTEM_MENU | wxMINIMIZE_BOX | wxCLOSE_BOX
+#define deformacjeFrm_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxMINIMIZE_BOX | wxCLOSE_BOX
 ////Dialog Style End
 
 class deformacjeFrm : public wxFrame
@@ -48,7 +46,7 @@ class deformacjeFrm : public wxFrame
 		DECLARE_EVENT_TABLE();
 		
 	public:
-		deformacjeFrm(wxWindow *parent, wxWindowID id = 1, const wxString &title = wxT("deformacje"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = deformacjeFrm_STYLE);
+		deformacjeFrm(wxWindow *parent, wxWindowID id = 1, const wxString &title = wxT("deformacje"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = deformacjeFrm_STYLE|wxRESIZE_BORDER);
 		virtual ~deformacjeFrm();
 		
 	private:
@@ -56,13 +54,9 @@ class deformacjeFrm : public wxFrame
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
-		wxBitmap WxBitmap1;
-        wxBitmap photo;
-        wxImage MyImage;
-        wxStaticText *WxStaticText8;
-        wxButton *WxButton2;
-		wxStaticText *WxStaticText7;
+		wxButton *WxButton2;
 		wxScrollBar *WxScrollBar6;
+		wxStaticText *WxStaticText7;
 		wxBoxSizer *WxBoxSizer9;
 		wxScrollBar *WxScrollBar5;
 		wxStaticText *WxStaticText6;
@@ -129,6 +123,8 @@ class deformacjeFrm : public wxFrame
 		wxImage img;
 		wxImage view;
 		wxClientDC *dc;
+		int xPoint;
+		int yPoint; 
 };
 
 #endif
