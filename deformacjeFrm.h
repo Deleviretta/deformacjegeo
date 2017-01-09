@@ -33,12 +33,15 @@
 #include <wx/button.h>
 #include <wx/panel.h>
 #include <wx/sizer.h>
+#include <math.h>
 ////Header Include End
 
 ////Dialog Style Start
 #undef deformacjeFrm_STYLE
 #define deformacjeFrm_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxMINIMIZE_BOX | wxCLOSE_BOX
 ////Dialog Style End
+
+class Matrix4;
 
 class deformacjeFrm : public wxFrame
 {
@@ -130,7 +133,7 @@ class deformacjeFrm : public wxFrame
 		void OnClose(wxCloseEvent& event);
 		void CreateGUIControls();
 		wxImage img;
-		wxImage view;
+		wxImage Img_Cpy;
 		wxClientDC *dc;
 		int xPoint;
 		int yPoint; 

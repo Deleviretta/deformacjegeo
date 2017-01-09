@@ -1,7 +1,7 @@
 # Project: deformacje
 # Compiler: Default GCC compiler
 # Compiler Type: MingW 3
-# Makefile created by wxDev-C++ IDE 7.4.2.569 on 07-01-17 20:40
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 07-01-17 21:07
 
 WXLIBNAME = wxmsw29u
 CPP       = g++.exe
@@ -39,7 +39,7 @@ $(BIN): $(OBJ)
 Objects/MingW/deformacjeApp.o: $(GLOBALDEPS) deformacjeApp.cpp deformacjeApp.h deformacjeFrm.h
 	$(CPP) -c deformacjeApp.cpp -o Objects/MingW/deformacjeApp.o $(CXXFLAGS)
 
-Objects/MingW/deformacjeFrm.o: $(GLOBALDEPS) deformacjeFrm.cpp deformacjeFrm.h
+Objects/MingW/deformacjeFrm.o: $(GLOBALDEPS) deformacjeFrm.cpp deformacjeFrm.h vecmat.h
 	$(CPP) -c deformacjeFrm.cpp -o Objects/MingW/deformacjeFrm.o $(CXXFLAGS)
 
 Objects/MingW/deformacje_private.res: Objects/MingW/deformacje_private.rc deformacjeApp.rc 

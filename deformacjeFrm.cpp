@@ -11,7 +11,10 @@
 #include "deformacjeFrm.h"
 #include <wx/dcbuffer.h>
 #include <wx/wfstream.h>
+#include <vector>
+#include "vecmat.h"
 
+double deg = M_PI/180.0;
 
 //Do not add custom headers between
 //Header Include Start and Header Include End
@@ -31,6 +34,12 @@ BEGIN_EVENT_TABLE(deformacjeFrm,wxFrame)
 	EVT_UPDATE_UI(ID_WXPANEL1,deformacjeFrm::UpdateDrawing)
 	EVT_BUTTON(ID_WXBUTTON1,deformacjeFrm::Load)
     EVT_BUTTON(ID_WXBUTTON2,deformacjeFrm::Saving)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR1,deformacjeFrm::)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR2,deformacjeFrm::WxSB_ScaleZScroll)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR3,deformacjeFrm::WxSB_ScaleZScroll)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR4,deformacjeFrm::WxSB_ScaleZScroll)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR5,deformacjeFrm::WxSB_ScaleZScroll)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR6,deformacjeFrm::WxSB_ScaleZScroll)
 	EVT_CLOSE(deformacjeFrm::OnClose)
 END_EVENT_TABLE()
 ////Event Table End
@@ -71,7 +80,7 @@ void deformacjeFrm::CreateGUIControls()
 	WxBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer3, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText1 = new wxStaticText(this, ID_WXSTATICTEXT1, _("Obrot prostopadle do plaszczyzny rejestrujacej"), wxPoint(5, 5), wxDefaultSize, 0, _("Obrot prostopadle do plaszczyzny rejestrujacej"));
+	WxStaticText1 = new wxStaticText(this, ID_WXSTATICTEXT1, _("Obrot z"), wxPoint(5, 5), wxDefaultSize, 0, _("Obrot prostopadle do plaszczyzny rejestrujacej"));
 	WxBoxSizer3->Add(WxStaticText1, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxScrollBar1 = new wxScrollBar(this, ID_WXSCROLLBAR1, wxPoint(92, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar1"));
@@ -81,7 +90,7 @@ void deformacjeFrm::CreateGUIControls()
 	WxBoxSizer4 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer4, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText2 = new wxStaticText(this, ID_WXSTATICTEXT2, _("Obrót poziom"), wxPoint(5, 5), wxDefaultSize, 0, _("Obrót poziom"));
+	WxStaticText2 = new wxStaticText(this, ID_WXSTATICTEXT2, _("Obrót x"), wxPoint(5, 5), wxDefaultSize, 0, _("Obrót poziom"));
 	WxBoxSizer4->Add(WxStaticText2, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxScrollBar2 = new wxScrollBar(this, ID_WXSCROLLBAR2, wxPoint(52, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar2"));
@@ -91,7 +100,7 @@ void deformacjeFrm::CreateGUIControls()
 	WxBoxSizer5 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer5, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, _("Obrót pion"), wxPoint(5, 5), wxDefaultSize, 0, _("Obrót pion"));
+	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, _("Obrót y"), wxPoint(5, 5), wxDefaultSize, 0, _("Obrót pion"));
 	WxBoxSizer5->Add(WxStaticText3, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxScrollBar3 = new wxScrollBar(this, ID_WXSCROLLBAR3, wxPoint(42, 6), wxSize(121, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar3"));
@@ -166,7 +175,6 @@ void deformacjeFrm::CreateGUIControls()
 	wxWindow::GetSize(&xPoint,&yPoint);
 	xPoint/=2.;
 	yPoint/=2.;
-	//yPoint = wxWindow.GetSize().y;
 }
 
 void deformacjeFrm::OnClose(wxCloseEvent& event)
@@ -209,7 +217,7 @@ void deformacjeFrm::Saving(wxCommandEvent& event){
 Matrix4 deformacjeFrm::RotateZ(double alpha)
 {
     Matrix4 temp;
-   temp.data[0][0] =  temp.data[1][1] = cos(alpha);
+    temp.data[0][0] =  temp.data[1][1] = cos(alpha);
     temp.data[0][1] = -sin(alpha);
     temp.data[1][0] = sin(alpha);
     temp.data[2][2] = 1;
@@ -218,45 +226,45 @@ Matrix4 deformacjeFrm::RotateZ(double alpha)
 
 Matrix4 deformacjeFrm::RotateX(double alpha) {	
    Matrix4 temp;
-temp.data[0][0] = 1.0;
-temp.data[1][1] =  temp.data[2][2] = cos(alpha);
-    temp.data[1][2] = -sin(alpha);
-    temp.data[2][1] = sin(alpha);
-    return temp;
+   temp.data[0][0] = 1.0;
+   temp.data[1][1] =  temp.data[2][2] = cos(alpha);
+   temp.data[1][2] = -sin(alpha);
+   temp.data[2][1] = sin(alpha);
+   return temp;
 }
 Matrix4 deformacjeFrm::RotateY(double alpha) {	
- Matrix4 temp;
- temp.data[0][0] = temp.data[2][2] = cos(alpha);
- temp.data[2][0] = -sin(alpha);
- temp.data[0][2] = sin(alpha);
- temp.data[1][1] = 1.0;
+   Matrix4 temp;
+   temp.data[0][0] = temp.data[2][2] = cos(alpha);
+   temp.data[2][0] = -sin(alpha);
+   temp.data[0][2] = sin(alpha);
+   temp.data[1][1] = 1.0;
    return temp;
 }	
 
 
 Matrix4 deformacjeFrm::norma(double z){
-Matrix4 tmp;
-tmp.data[0][0] = 1.0/z;
- tmp.data[1][1] = 1.0/z;
-tmp.data[3][3] = 1.0/z;
- return tmp;
+   Matrix4 tmp;
+   tmp.data[0][0] = 1.0/z;
+   tmp.data[1][1] = 1.0/z; 
+   tmp.data[3][3] = 1.0/z;
+   return tmp;
 }
 
 Matrix4 deformacjeFrm::scale(double Sx,double Sy, double Sz){
-Matrix4 tmp;
-tmp.data[0][0] = Sx;
- tmp.data[1][1] = Sy;
-tmp.data[2][2] = Sz;
- return tmp;
+   Matrix4 tmp;
+   tmp.data[0][0] = Sx;
+   tmp.data[1][1] = Sy;
+   tmp.data[2][2] = Sz;
+   return tmp;
 } 
 
 Matrix4 deformacjeFrm::SkewX(double a,double b){
-Matrix4 tmp;
-tmp.data[0][0] = tmp.data[1][1] = tmp.data[2][2] = 1;
-tmp.data[1][0] = b;
-tmp.data[0][1] = a;
+   Matrix4 tmp;
+   tmp.data[0][0] = tmp.data[1][1] = tmp.data[2][2] = 1;
+   tmp.data[1][0] = b;
+   tmp.data[0][1] = a;
 
- return tmp;
+   return tmp;
 }
 
 Matrix4 deformacjeFrm::Shift3D(double Tx, double Ty,double Tz) 
@@ -273,17 +281,6 @@ Matrix4 deformacjeFrm::Shift3D(double Tx, double Ty,double Tz)
 
 Matrix4  deformacjeFrm::ToWindow(double xmax, double ymax){
     Matrix4 t1,t2;
-    /*double sx = xmax/2;
-    double sy = ymax/-2;
-    t1.data[0][0] = sx;
-    t1.data[0][2] = 0 - sx*(-1.0);
-    t1.data[1][1] = sy;
-    t1.data[1][2] = 0- sy*(1.0);
-    
-    t2.data[0][3] = xmax/2.0;
-     t2.data[0][0] = t2.data[1][1] = 1.0;
-    t2.data[1][3] = ymax/2.0;
-    return t2*t1;*/
     t1.data[0][0] = 1;
     t1.data[1][1] = 1;
     t1.data[0][3] = xmax/2.0; // przesuwamyc calosc na srodek okna (w/2, h/2);
@@ -312,8 +309,70 @@ void deformacjeFrm::UpdateDrawing(wxUpdateUIEvent& event){
 
 void deformacjeFrm::drawing(){
     
-	view = img.Copy();
-	view.Rescale(WxPanel1->GetSize().x, WxPanel1->GetSize().y);
-    dc->DrawBitmap(wxBitmap(view), 0, 0, true);
+    int w, h;
+	Img_Cpy = img.Copy();
+	Img_Cpy.Rescale(WxPanel1->GetSize().x, WxPanel1->GetSize().y);
+    dc->DrawBitmap(wxBitmap(Img_Cpy), 0, 0, true);
+    WxPanel1->GetSize(&w, &h);
+    //int w = Img_Cpy.GetWidth();
+    //int h = Img_Cpy.GetHeight();
+    Matrix4 T1 =  ToWindow( w, h);
+
+/* Operacje w ukladzie swiata */
+
+    Matrix4 M1= To2D() * Shift3D(0,0,0); // dowolne wartosci?
+    Matrix4 M2 = M1 * SkewX(0.0,0.0)* Shift3D(-xPoint,-yPoint,0)* RotateX(0.0);
+    M2 = M2 * RotateY(0.0); //value*deg/100....
+    M2 = M2 * RotateZ(0.0); // wartosci 0-360
+    M2 = M2 * Shift3D(xPoint,yPoint,0)*scale(1,1,1); // wartosci > 0
+
+///////////////////////////////////////////////////////
+
+    Vector4 a1, b1;
+    int x1,y1;
+    for(int i =0 ; i < w ; i++){
+        for(int j =0 ; j < h; j++){
+            int r = img.GetRed(i,j);
+            int g = img.GetGreen(i,j);
+            int b = img.GetBlue(i,j);
+        
+/** musimu zmienic wspolrzedne punktu na wspolrzedne swiata - > x = x - w/2, y = y- h/2 */
+
+            a1.Set(i- (w/2),j -(h/2),0);
+            b1= M2*a1; //operacje ukladzie swiata
+            b1 = norma(b1.data[3])*b1; // normowanie
+            b1 = T1*b1; // na ekran
+            x1 = b1.GetX();
+            y1 = b1.GetY();
+        /** sprawdzamy czy wspolrzedne nie wykraczaja poza obraz*/
+            if( x1>0 && x1 < w && y1 < h && y1 > 0){
+                Img_Cpy.SetRGB(x1,y1, r,g,b);
+            }
+        }
+    }
+
+    /*double kd1 = (value-50.0)/10000000.0;
+    double oldX, oldY, newX, newY;
+    for (int i = 0; i < w; i++)
+    {
+        for (int j = 0; j < h; j++)
+        {
+            oldX = i - w/2.0; 
+            oldY = j - h/2.0;
+            double ru =sqrt(pow(oldX, 2) + pow(oldY, 2));
+            newX = oldX/(1.0 + kd1* pow(ru,2) ) ;
+            newY = oldY/(1.0 + kd1* pow(ru,2) ) ;
+            
+            newX += w/2.0;
+            newY += h/2.0; 
+           
+            if( newX >0 &&  newX < w-1 && newY < h-1 && newY > 0){
+            int r = Img_Org.GetRed(i,j);
+            int g = Img_Org.GetGreen(i,j);
+            int b = Img_Org.GetBlue(i,j);
+            Img_Cpy.SetRGB(newX,newY, r,g,b);
+            }
+        }
+    }*/
     
 }
