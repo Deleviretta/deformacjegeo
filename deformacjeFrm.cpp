@@ -34,12 +34,12 @@ BEGIN_EVENT_TABLE(deformacjeFrm,wxFrame)
 	EVT_UPDATE_UI(ID_WXPANEL1,deformacjeFrm::UpdateDrawing)
 	EVT_BUTTON(ID_WXBUTTON1,deformacjeFrm::Load)
     EVT_BUTTON(ID_WXBUTTON2,deformacjeFrm::Saving)
-    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR1,deformacjeFrm::)
-    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR2,deformacjeFrm::WxSB_ScaleZScroll)
-    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR3,deformacjeFrm::WxSB_ScaleZScroll)
-    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR4,deformacjeFrm::WxSB_ScaleZScroll)
-    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR5,deformacjeFrm::WxSB_ScaleZScroll)
-    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR6,deformacjeFrm::WxSB_ScaleZScroll)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR1,deformacjeFrm::RotationX)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR2,deformacjeFrm::RotationY)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR3,deformacjeFrm::RotationZ)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR4,deformacjeFrm::SkewX)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR5,deformacjeFrm::SkewY)
+    EVT_COMMAND_SCROLL(ID_WXSCROLLBAR6,deformacjeFrm::BarrelPincushion)
 	EVT_CLOSE(deformacjeFrm::OnClose)
 END_EVENT_TABLE()
 ////Event Table End
@@ -320,6 +320,10 @@ void deformacjeFrm::drawing(){
 
 /* Operacje w ukladzie swiata */
 
+/**
+* jakisscrol->GetThumbPosition() ---> pobiera wartoœæ na która wskazuje scroll
+*
+**/
     Matrix4 M1= To2D() * Shift3D(0,0,0); // dowolne wartosci?
     Matrix4 M2 = M1 * SkewX(0.0,0.0)* Shift3D(-xPoint,-yPoint,0)* RotateX(0.0);
     M2 = M2 * RotateY(0.0); //value*deg/100....
@@ -375,4 +379,22 @@ void deformacjeFrm::drawing(){
         }
     }*/
     
+}
+
+void deformacjeFrm::RotationX(wxScrollEvent& event){
+}
+
+void deformacjeFrm::RotationY(wxScrollEvent& event){
+}
+
+void deformacjeFrm::RotationZ(wxScrollEvent& event){
+}
+
+void deformacjeFrm::SkewX(wxScrollEvent& event){
+}
+
+void deformacjeFrm::SkewY(wxScrollEvent& event){
+}
+
+void deformacjeFrm::BarrelPincushion(wxScrollEvent& event){
 }

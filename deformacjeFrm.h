@@ -98,6 +98,12 @@ class deformacjeFrm : public wxFrame
 		void Saving(wxCommandEvent& event);
 		void UpdateDrawing(wxUpdateUIEvent& event);
 		void drawing();
+		void RotationX(wxScrollEvent& event);
+		void RotationY(wxScrollEvent& event);
+		void RotationZ(wxScrollEvent& event);
+		void SkewX(wxScrollEvent& event);
+		void SkewY(wxScrollEvent& event);
+		void BarrelPincushion(wxScrollEvent& event);
 		
 	private:
 		//Note: if you receive any error with these enum IDs, then you need to
