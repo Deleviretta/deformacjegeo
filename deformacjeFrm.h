@@ -33,7 +33,6 @@
 #include <wx/button.h>
 #include <wx/panel.h>
 #include <wx/sizer.h>
-#include <math.h>
 ////Header Include End
 
 ////Dialog Style Start
@@ -60,12 +59,18 @@ class deformacjeFrm : public wxFrame
 	public:
 		deformacjeFrm(wxWindow *parent, wxWindowID id = 1, const wxString &title = wxT("deformacje"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = deformacjeFrm_STYLE|wxRESIZE_BORDER);
 		virtual ~deformacjeFrm();
+		void WxButton3Click(wxCommandEvent& event);
+		void WxEdit1Enter(wxCommandEvent& event);
+		
 		
 	private:
 		//Do not add custom control declarations between
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
+		wxButton *WxButton4;
+		wxButton *WxButton3;
+		wxStaticBoxSizer *WxStaticBoxSizer1;
 		wxButton *WxButton2;
 		wxScrollBar *WxScrollBar6;
 		wxStaticText *WxStaticText7;
@@ -96,14 +101,22 @@ class deformacjeFrm : public wxFrame
 		////GUI Control Declaration End
 		void Load(wxCommandEvent& event);
 		void Saving(wxCommandEvent& event);
+		void Zapamietaj(wxCommandEvent& event);
+		void Reset(wxCommandEvent& event);
+		
+		void WxEdit1E(wxCommandEvent& event);
+		void WxEdit2E(wxCommandEvent& event);
 		void UpdateDrawing(wxUpdateUIEvent& event);
 		void drawing();
 		void RotationX(wxScrollEvent& event);
 		void RotationY(wxScrollEvent& event);
 		void RotationZ(wxScrollEvent& event);
+		void ScrollThumbRelease1(wxScrollEvent& event);
 		void SkewX(wxScrollEvent& event);
 		void SkewY(wxScrollEvent& event);
+		void Beczka(int value);
 		void BarrelPincushion(wxScrollEvent& event);
+		void interpolate(wxImage &ImgIn);
 		
 	private:
 		//Note: if you receive any error with these enum IDs, then you need to
@@ -113,6 +126,8 @@ class deformacjeFrm : public wxFrame
 		enum
 		{
 			////GUI Enum Control ID Start
+			ID_WXBUTTON4 = 1034,
+			ID_WXBUTTON3 = 1033,
 			ID_WXBUTTON2 = 1030,
 			ID_WXSCROLLBAR6 = 1029,
 			ID_WXSTATICTEXT7 = 1028,
@@ -141,8 +156,11 @@ class deformacjeFrm : public wxFrame
 		wxImage img;
 		wxImage Img_Cpy;
 		wxClientDC *dc;
-		int xPoint;
-		int yPoint; 
+		int *xPoint;
+		int *yPoint; 
+		bool **tab;
+		int option;
+		
 };
 
 #endif
