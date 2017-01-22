@@ -33,7 +33,7 @@ BEGIN_EVENT_TABLE(deformacjeFrm,wxFrame)
 	//	EVT_UPDATE_UI(ID_WXPANEL1,deformacjeFrm::UpdateDrawing)
 	EVT_BUTTON(ID_WXBUTTON1,deformacjeFrm::Load)
 	EVT_BUTTON(ID_WXBUTTON2,deformacjeFrm::Saving)
-		EVT_BUTTON(ID_WXBUTTON2,deformacjeFrm::Saving)
+	EVT_BUTTON(ID_WXBUTTON3,deformacjeFrm::Zapamietaj)
 	//	EVT_COMMAND_SCROLL_THUMBRELEASE(ID_WXSCROLLBAR1,deformacjeFrm::ScrollThumbRelease1)
 	//	EVT_COMMAND_SCROLL_THUMBRELEASE(ID_WXSCROLLBAR2,deformacjeFrm::ScrollThumbRelease1)
 	//EVT_COMMAND_SCROLL_THUMBRELEASE(ID_WXSCROLLBAR3,deformacjeFrm::ScrollThumbRelease1)
@@ -46,9 +46,10 @@ BEGIN_EVENT_TABLE(deformacjeFrm,wxFrame)
 	EVT_COMMAND_SCROLL(ID_WXSCROLLBAR4,deformacjeFrm::SkewX)
 	EVT_COMMAND_SCROLL(ID_WXSCROLLBAR5,deformacjeFrm::SkewY)
 	EVT_COMMAND_SCROLL(ID_WXSCROLLBAR6,deformacjeFrm::BarrelPincushion)
-	EVT_BUTTON(ID_WXBUTTON3,deformacjeFrm::Zapamietaj)
 	EVT_TEXT_ENTER(ID_WXEDIT1,deformacjeFrm::WxEdit1E)
 	EVT_TEXT_ENTER(ID_WXEDIT2,deformacjeFrm::WxEdit2E)
+	EVT_TEXT_ENTER(ID_WXEDIT3,deformacjeFrm::WxEdit3E)
+	EVT_TEXT_ENTER(ID_WXEDIT4,deformacjeFrm::WxEdit4E)
 	EVT_CLOSE(deformacjeFrm::OnClose)
 	////Manual Code End
 	
@@ -79,97 +80,109 @@ void deformacjeFrm::CreateGUIControls()
 	this->SetSizer(WxBoxSizer1);
 	this->SetAutoLayout(true);
 
-	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 20), wxSize(400, 400));
+	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 53), wxSize(400, 400));
 	WxBoxSizer1->Add(WxPanel1, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer2 = new wxBoxSizer(wxVERTICAL);
 	WxBoxSizer1->Add(WxBoxSizer2, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxButton1 = new wxButton(this, ID_WXBUTTON1, _("Wczytaj"), wxPoint(111, 5), wxSize(75, 25), 0, wxDefaultValidator, _("WxButton1"));
+	WxButton1 = new wxButton(this, ID_WXBUTTON1, _("Wczytaj"), wxPoint(136, 5), wxSize(75, 25), 0, wxDefaultValidator, _("WxButton1"));
 	WxBoxSizer2->Add(WxButton1, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer3 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer3, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText1 = new wxStaticText(this, ID_WXSTATICTEXT1, _("Obrót z:          "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText1"));
+	WxStaticText1 = new wxStaticText(this, ID_WXSTATICTEXT1, _("Obrót z:                      "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText1"));
 	WxBoxSizer3->Add(WxStaticText1, 0, wxALIGN_LEFT | wxALL, 5);
 
-	WxScrollBar1 = new wxScrollBar(this, ID_WXSCROLLBAR1, wxPoint(91, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar1"));
+	WxScrollBar1 = new wxScrollBar(this, ID_WXSCROLLBAR1, wxPoint(127, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar1"));
 	WxScrollBar1->Enable(false);
 	WxBoxSizer3->Add(WxScrollBar1, 0, wxALIGN_RIGHT | wxALL, 5);
 
 	WxBoxSizer4 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer4, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText2 = new wxStaticText(this, ID_WXSTATICTEXT2, _("Obrót x:           "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText2"));
+	WxStaticText2 = new wxStaticText(this, ID_WXSTATICTEXT2, _("Obrót x:                      "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText2"));
 	WxBoxSizer4->Add(WxStaticText2, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxScrollBar2 = new wxScrollBar(this, ID_WXSCROLLBAR2, wxPoint(94, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar2"));
+	WxScrollBar2 = new wxScrollBar(this, ID_WXSCROLLBAR2, wxPoint(127, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar2"));
 	WxScrollBar2->Enable(false);
 	WxBoxSizer4->Add(WxScrollBar2, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer5 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer5, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, _("Obrót y:           "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText3"));
+	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, _("Obrót y:                      "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText3"));
 	WxBoxSizer5->Add(WxStaticText3, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxScrollBar3 = new wxScrollBar(this, ID_WXSCROLLBAR3, wxPoint(95, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar3"));
+	WxScrollBar3 = new wxScrollBar(this, ID_WXSCROLLBAR3, wxPoint(128, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar3"));
 	WxScrollBar3->Enable(false);
 	WxBoxSizer5->Add(WxScrollBar3, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer6 = new wxBoxSizer(wxVERTICAL);
 	WxBoxSizer2->Add(WxBoxSizer6, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, _("Œrodek obrotu z: "), wxPoint(8, 5), wxDefaultSize, 0, _("WxStaticText4"));
-	WxBoxSizer6->Add(WxStaticText4, 0, wxALIGN_CENTER | wxALL, 5);
+	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, _("Œrodek obrotu z: "), wxPoint(5, 2), wxDefaultSize, 0, _("WxStaticText4"));
+	WxBoxSizer6->Add(WxStaticText4, 0, wxALIGN_CENTER | wxALL, 2);
 
-	WxEdit1 = new wxTextCtrl(this, ID_WXEDIT1, _("0"), wxPoint(5, 34), wxSize(100, 19), 0, wxDefaultValidator, _("WxEdit1"));
+	WxEdit1 = new wxTextCtrl(this, ID_WXEDIT1, _("0"), wxPoint(2, 25), wxSize(100, 19), 0, wxDefaultValidator, _("WxEdit1"));
 	WxEdit1->SetMaxLength(5);
-	WxBoxSizer6->Add(WxEdit1, 0, wxALIGN_CENTER | wxALL, 5);
+	WxBoxSizer6->Add(WxEdit1, 0, wxALIGN_CENTER | wxALL, 2);
 
-	WxEdit2 = new wxTextCtrl(this, ID_WXEDIT2, _("0"), wxPoint(5, 63), wxSize(100, 19), 0, wxDefaultValidator, _("WxEdit2"));
-	WxBoxSizer6->Add(WxEdit2, 0, wxALIGN_CENTER | wxALL, 5);
+	WxEdit2 = new wxTextCtrl(this, ID_WXEDIT2, _("0"), wxPoint(2, 48), wxSize(100, 19), 0, wxDefaultValidator, _("WxEdit2"));
+	WxBoxSizer6->Add(WxEdit2, 0, wxALIGN_CENTER | wxALL, 2);
 
 	WxBoxSizer7 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer7, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText5 = new wxStaticText(this, ID_WXSTATICTEXT5, _(" Przechylenie x:           "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText5"));
+	WxStaticText5 = new wxStaticText(this, ID_WXSTATICTEXT5, _(" Przechylenie x:                       "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText5"));
 	WxBoxSizer7->Add(WxStaticText5, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxScrollBar4 = new wxScrollBar(this, ID_WXSCROLLBAR4, wxPoint(132, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar4"));
+	WxScrollBar4 = new wxScrollBar(this, ID_WXSCROLLBAR4, wxPoint(168, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar4"));
 	WxScrollBar4->Enable(false);
 	WxBoxSizer7->Add(WxScrollBar4, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer8 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer8, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxStaticText6 = new wxStaticText(this, ID_WXSTATICTEXT6, _("Przechylenie y:          "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText6"));
+	WxStaticText6 = new wxStaticText(this, ID_WXSTATICTEXT6, _("Przechylenie y:                      "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText6"));
 	WxBoxSizer8->Add(WxStaticText6, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxScrollBar5 = new wxScrollBar(this, ID_WXSCROLLBAR5, wxPoint(127, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar5"));
+	WxScrollBar5 = new wxScrollBar(this, ID_WXSCROLLBAR5, wxPoint(163, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar5"));
 	WxScrollBar5->Enable(false);
 	WxBoxSizer8->Add(WxScrollBar5, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer9 = new wxBoxSizer(wxHORIZONTAL);
 	WxBoxSizer2->Add(WxBoxSizer9, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
 
-	WxStaticText7 = new wxStaticText(this, ID_WXSTATICTEXT7, _("P/B k:                  "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText7"));
+	WxStaticText7 = new wxStaticText(this, ID_WXSTATICTEXT7, _("P/B k:                                              "), wxPoint(5, 5), wxDefaultSize, 0, _("WxStaticText7"));
 	WxBoxSizer9->Add(WxStaticText7, 0, wxALIGN_LEFT | wxALL, 5);
 
-	WxScrollBar6 = new wxScrollBar(this, ID_WXSCROLLBAR6, wxPoint(104, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar6"));
+	WxScrollBar6 = new wxScrollBar(this, ID_WXSCROLLBAR6, wxPoint(188, 6), wxSize(150, 17), wxSB_HORIZONTAL, wxDefaultValidator, _("WxScrollBar6"));
 	WxScrollBar6->Enable(false);
 	WxBoxSizer9->Add(WxScrollBar6, 0, wxALIGN_CENTER | wxALL, 5);
 
-	wxStaticBox* WxStaticBoxSizer1_StaticBoxObj = new wxStaticBox(this, wxID_ANY, _(""));
-	WxStaticBoxSizer1 = new wxStaticBoxSizer(WxStaticBoxSizer1_StaticBoxObj, wxHORIZONTAL);
-	WxBoxSizer2->Add(WxStaticBoxSizer1, 0, wxALIGN_CENTER | wxALL, 5);
+	wxStaticBox* WxStaticBoxSizer2_StaticBoxObj = new wxStaticBox(this, wxID_ANY, _(""));
+	WxStaticBoxSizer2 = new wxStaticBoxSizer(WxStaticBoxSizer2_StaticBoxObj, wxVERTICAL);
+	WxBoxSizer2->Add(WxStaticBoxSizer2, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxButton3 = new wxButton(this, ID_WXBUTTON3, _("Zapamiêtaj"), wxPoint(10, 20), wxSize(75, 25), 0, wxDefaultValidator, _("WxButton3"));
-	WxStaticBoxSizer1->Add(WxButton3, 0, wxALIGN_CENTER | wxALL, 5);
+	WxStaticText8 = new wxStaticText(this, ID_WXSTATICTEXT8, _("Œrodek operacji:  "), wxPoint(7, 17), wxDefaultSize, 0, _("WxStaticText8"));
+	WxStaticBoxSizer2->Add(WxStaticText8, 0, wxALIGN_CENTER | wxALL, 2);
 
-	WxButton2 = new wxButton(this, ID_WXBUTTON2, _("Zapisz"), wxPoint(95, 20), wxSize(68, 24), 0, wxDefaultValidator, _("WxButton2"));
-	WxStaticBoxSizer1->Add(WxButton2, 0, wxALIGN_CENTER | wxALL, 5);
+	WxEdit3 = new wxTextCtrl(this, ID_WXEDIT3, _("0"), wxPoint(19, 41), wxSize(70, 19), 0, wxDefaultValidator, _("WxEdit3"));
+	WxStaticBoxSizer2->Add(WxEdit3, 0, wxALIGN_CENTER | wxALL, 3);
+
+	WxEdit4 = new wxTextCtrl(this, ID_WXEDIT4, _("0"), wxPoint(19, 66), wxSize(70, 19), 0, wxDefaultValidator, _("WxEdit4"));
+	WxStaticBoxSizer2->Add(WxEdit4, 0, wxALIGN_CENTER | wxALL, 3);
+
+	WxBoxSizer10 = new wxBoxSizer(wxHORIZONTAL);
+	WxBoxSizer2->Add(WxBoxSizer10, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxButton2 = new wxButton(this, ID_WXBUTTON2, _("Zapamiêtaj"), wxPoint(5, 5), wxSize(70, 25), 0, wxDefaultValidator, _("WxButton2"));
+	WxBoxSizer10->Add(WxButton2, 0, wxALIGN_CENTER | wxALL, 5);
+
+	WxButton3 = new wxButton(this, ID_WXBUTTON3, _("Zapisz"), wxPoint(85, 5), wxSize(70, 25), 0, wxDefaultValidator, _("WxButton3"));
+	WxBoxSizer10->Add(WxButton3, 0, wxALIGN_CENTER | wxALL, 5);
 
 	SetTitle(_("deformacje"));
 	SetIcon(wxNullIcon);
@@ -188,18 +201,20 @@ void deformacjeFrm::CreateGUIControls()
 	WxScrollBar3->SetScrollbar(0, 1, 361, 1,true);
 	WxScrollBar3->Enable(true);
 	
-	WxScrollBar4->SetScrollbar(0, 1, 401, 1,true);
+	WxScrollBar4->SetScrollbar(0, 1, 721, 1,true);
 	WxScrollBar4->Enable(true);
-	WxScrollBar4->SetThumbPosition(200);
+	WxScrollBar4->SetThumbPosition(360);
 	
-	WxScrollBar5->SetScrollbar(0, 1, 401, 1,true);
+	WxScrollBar5->SetScrollbar(0, 1, 721, 1,true);
 	WxScrollBar5->Enable(true);
-	WxScrollBar5->SetThumbPosition(200);
+	WxScrollBar5->SetThumbPosition(360);
 	WxScrollBar6->SetScrollbar(0, 1, 100, 1,true);
 	WxScrollBar6->Enable(true);
 	WxScrollBar6->SetThumbPosition(50);
 	xPoint = new int;
 	yPoint = new int;
+	xPointB = new int;
+	yPointB = new int;
 	option = 0;
 }
 
@@ -232,6 +247,15 @@ void deformacjeFrm::Load(wxCommandEvent& event){
         str << (*xPoint);
         str <<", " << (*yPoint) << ")";
          WxStaticText4->SetLabel(str);
+         
+         /* srodek beczki */
+         (*xPointB)= 0.0;//(Img_Cpy.GetWidth()/2.0);
+	     (*yPointB)= 0.0;//(Img_Cpy.GetHeight()/2.0);
+
+        str = "Œrodek deformacji P\B: (";
+        str << (*xPointB);
+        str <<", " << (*yPointB) << ")";
+         WxStaticText8->SetLabel(str);
 	     
 	}
 	
@@ -241,14 +265,14 @@ void deformacjeFrm::Saving(wxCommandEvent& event){
 
 	if(img.Ok()) {
 		wxImage::AddHandler(new wxPNGHandler);
-		wxFileDialog dialog(this, _("Zapisz obrazek"), "", "", "PNG (*.png)|*.png", wxFD_SAVE);
+		wxFileDialog dialog(this, _("Zapisz obrazek"), "", "", "JPEG (*.jpg)|*.jpg", wxFD_SAVE);
 		int arg = dialog.ShowModal();
 		if (arg == wxID_CANCEL){
 			return;
 		} else if (arg == wxID_OK) {
-			img.SaveFile(dialog.GetPath(), wxBITMAP_TYPE_PNG);
+			img.SaveFile(dialog.GetPath(), wxBITMAP_TYPE_JPEG);
 		} else {
-			wxMessageBox("Zapis nie powiódl sie!");
+			wxMessageBox("Zapis nie powiód³ sie!");
 		}
 	}
     
@@ -376,7 +400,7 @@ void deformacjeFrm::drawing(){
 if(option ==1){
 Matrix4 T1 =  ToWindow( w, h);
 Matrix4 M1= To2D() * Shift3D(0,0,0); // dowolne wartosci?
-Matrix4 M2 = M1 * SkewX( (WxScrollBar4->GetThumbPosition()-200.0)*deg,(WxScrollBar5->GetThumbPosition()-200.0)*deg)* Shift3D(-(*xPoint),-(*yPoint),0)* RotateX(WxScrollBar2->GetThumbPosition()*deg);
+Matrix4 M2 = M1 * SkewX( (WxScrollBar4->GetThumbPosition()-360.0)*deg,(WxScrollBar5->GetThumbPosition()-360.0)*deg)* Shift3D(-(*xPoint),-(*yPoint),0)* RotateX(WxScrollBar2->GetThumbPosition()*deg);
 M2 = M2 * RotateY(WxScrollBar3->GetThumbPosition()*deg); //value*deg/100....
 M2 = M2 * RotateZ(WxScrollBar1->GetThumbPosition()*deg); 
 M2 = M2 * Shift3D( (*xPoint),(*yPoint),0)*scale(1,1,1); // wartosci > 0
@@ -489,10 +513,15 @@ double oldX, oldY, newX, newY;
 for (int i = 0; i < w; i++){
    for (int j = 0; j < h; j++){
             oldX = i - w/2.0; 
-            oldY = j - h/2.0;
-            double ru =sqrt(pow(oldX, 2) + pow(oldY, 2));
+            oldY = j - h/2.0; // do œrodka wspó³rzêdnych
+            
+        
+            
+            double ru =sqrt(pow((oldX-(*xPointB)), 2) + pow(oldY-(*yPointB), 2));
             newX = oldX/(1.0 + kd1* pow(ru,2) ) ;
             newY = oldY/(1.0 + kd1* pow(ru,2) ) ;
+            
+        
             
             newX += w/2.0;
             newY += h/2.0; 
@@ -520,7 +549,7 @@ void deformacjeFrm::ScrollThumbRelease1(wxScrollEvent& event)
 void deformacjeFrm::RotationX(wxScrollEvent& event){
  option = 1;
  wxString str;
- str<< "Rotate X:  " ;
+ str<< "Obrót poziom:  " ;
  str << (WxScrollBar2->GetThumbPosition());
  WxStaticText2->SetLabel(str);
   if(img.Ok()){
@@ -532,7 +561,7 @@ void deformacjeFrm::RotationX(wxScrollEvent& event){
 void deformacjeFrm::RotationY(wxScrollEvent& event){
     option = 1;
     wxString str;
-    str<< "Rotate Y: " ;
+    str<< "Obrót pion: " ;
     str << (WxScrollBar3->GetThumbPosition());
     WxStaticText3->SetLabel(str);
       if(img.Ok()){
@@ -543,7 +572,7 @@ void deformacjeFrm::RotationY(wxScrollEvent& event){
 void deformacjeFrm::RotationZ(wxScrollEvent& event){
     option = 1;
     wxString str;
-    str<< "Rotate Z: " ;
+    str<< "Obrót prostopadle: " ;
     str << (WxScrollBar1->GetThumbPosition());
     WxStaticText1->SetLabel(str);
       if(img.Ok()){
@@ -555,8 +584,8 @@ void deformacjeFrm::RotationZ(wxScrollEvent& event){
 void deformacjeFrm::SkewX(wxScrollEvent& event){
     option = 1;
     wxString str;
-    str<< "Skew X:  " ;
-    str << (WxScrollBar4->GetThumbPosition()-200.0);
+    str<< "Przechylenie poziomo:  " ;
+    str << (WxScrollBar4->GetThumbPosition()-360.0);
     WxStaticText5->SetLabel(str);
       if(img.Ok()){
 	drawing();
@@ -566,8 +595,8 @@ void deformacjeFrm::SkewX(wxScrollEvent& event){
 void deformacjeFrm::SkewY(wxScrollEvent& event){
     option = 1;
     wxString str;
-    str<< "Skew Y:  " ;
-    str << (WxScrollBar5->GetThumbPosition()-200.0);
+    str<< "Przechylenie pionowo:  " ;
+    str << (WxScrollBar5->GetThumbPosition()-360.0);
     WxStaticText6->SetLabel(str);
       if(img.Ok()){
 	drawing();
@@ -578,7 +607,7 @@ void deformacjeFrm::BarrelPincushion(wxScrollEvent& event){
     
     option = 2;
     wxString str;
-    str<< "P/B k: " ;
+    str<< "Poduszka/Beczka : " ;
     str << ( (WxScrollBar6->GetThumbPosition() -50.0)/8000000.0 );
     WxStaticText7->SetLabel(str);
       if(img.Ok()){
@@ -631,7 +660,7 @@ void deformacjeFrm::WxEdit1E(wxCommandEvent& event)
     wxString str;
     str  = WxEdit1->GetLineText(0);
     (*xPoint) = wxAtoi(str);
-    str = "Œrodek obrotu z: (";
+    str = "Œrodek obrotu prostopad³ego: (";
     str << ((*xPoint));
     str <<", " << (*yPoint) << ")";
     WxStaticText4->SetLabel(str);
@@ -642,8 +671,31 @@ void deformacjeFrm::WxEdit2E(wxCommandEvent& event)
     wxString str;
     str  = WxEdit2->GetLineText(0);
     (*yPoint) = wxAtoi(str);
-    str = "Œrodek obrotu z: (";
+    str = "Œrodek obrotu prostopad³ego: (";
     str << (*xPoint);
     str <<", " << (*yPoint) << ")";
     WxStaticText4->SetLabel(str);
 }
+
+void deformacjeFrm::WxEdit3E(wxCommandEvent& event)
+{
+    wxString str;
+    str  = WxEdit3->GetLineText(0);
+    (*xPointB) = wxAtoi(str);
+    str = "Œrodek deformacji P\B: (";
+    str << ((*xPointB));
+    str <<", " << (*yPointB) << ")";
+    WxStaticText8->SetLabel(str);
+}
+
+void deformacjeFrm::WxEdit4E(wxCommandEvent& event)
+{
+    wxString str;
+    str  = WxEdit4->GetLineText(0);
+    (*yPointB) = wxAtoi(str);
+    str = "Œrodek deformacji P\B: (";
+    str << (*xPointB);
+    str <<", " << (*yPointB) << ")";
+    WxStaticText8->SetLabel(str);
+}
+

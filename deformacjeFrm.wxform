@@ -1,6 +1,6 @@
 object frmNewForm: TfrmNewForm
-  Left = 8
-  Top = 8
+  Left = 25
+  Top = -26
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'deformacje'
@@ -44,7 +44,7 @@ object frmNewForm: TfrmNewForm
     Wx_IDValue = 1001
     object WxPanel1: TWxPanel
       Left = 5
-      Top = 20
+      Top = 53
       Width = 400
       Height = 400
       TabOrder = 0
@@ -77,10 +77,10 @@ object frmNewForm: TfrmNewForm
       Wx_Floating_Y_Pos = 0
     end
     object WxBoxSizer2: TWxBoxSizer
-      Left = 415
-      Top = 5
-      Width = 297
-      Height = 431
+      Left = 416
+      Top = 2
+      Width = 347
+      Height = 496
       TabOrder = 1
       Orientation = wxVertical
       Wx_Class = 'wxBoxSizer'
@@ -88,7 +88,7 @@ object frmNewForm: TfrmNewForm
       Wx_IDName = 'ID_WXBOXSIZER2'
       Wx_IDValue = 1004
       object WxButton1: TWxButton
-        Left = 111
+        Left = 136
         Top = 5
         Width = 75
         Height = 25
@@ -125,9 +125,9 @@ object frmNewForm: TfrmNewForm
         Wx_Floating_Y_Pos = 0
       end
       object WxBoxSizer3: TWxBoxSizer
-        Left = 25
+        Left = 32
         Top = 40
-        Width = 246
+        Width = 282
         Height = 29
         TabOrder = 1
         Wx_Class = 'wxBoxSizer'
@@ -137,9 +137,9 @@ object frmNewForm: TfrmNewForm
         object WxStaticText1: TWxStaticText
           Left = 5
           Top = 5
-          Width = 76
+          Width = 112
           Height = 19
-          Caption = 'Obr'#243't z:          '
+          Caption = 'Obr'#243't z:                      '
           TabOrder = 0
           Wx_BGColor = clBlack
           Wx_Class = 'wxStaticText'
@@ -169,7 +169,7 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
         object WxScrollBar1: TWxScrollBar
-          Left = 91
+          Left = 127
           Top = 6
           Width = 150
           Height = 17
@@ -203,9 +203,9 @@ object frmNewForm: TfrmNewForm
         end
       end
       object WxBoxSizer4: TWxBoxSizer
-        Left = 24
+        Left = 32
         Top = 79
-        Width = 249
+        Width = 282
         Height = 29
         TabOrder = 2
         Wx_Class = 'wxBoxSizer'
@@ -215,9 +215,9 @@ object frmNewForm: TfrmNewForm
         object WxStaticText2: TWxStaticText
           Left = 5
           Top = 5
-          Width = 79
+          Width = 112
           Height = 19
-          Caption = 'Obr'#243't x:           '
+          Caption = 'Obr'#243't x:                      '
           TabOrder = 0
           Wx_BGColor = clBlack
           Wx_Class = 'wxStaticText'
@@ -246,7 +246,7 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
         object WxScrollBar2: TWxScrollBar
-          Left = 94
+          Left = 127
           Top = 6
           Width = 150
           Height = 17
@@ -279,9 +279,9 @@ object frmNewForm: TfrmNewForm
         end
       end
       object WxBoxSizer5: TWxBoxSizer
-        Left = 23
+        Left = 32
         Top = 118
-        Width = 250
+        Width = 283
         Height = 29
         TabOrder = 3
         Wx_Class = 'wxBoxSizer'
@@ -291,9 +291,9 @@ object frmNewForm: TfrmNewForm
         object WxStaticText3: TWxStaticText
           Left = 5
           Top = 5
-          Width = 80
+          Width = 113
           Height = 19
-          Caption = 'Obr'#243't y:           '
+          Caption = 'Obr'#243't y:                      '
           TabOrder = 0
           Wx_BGColor = clBlack
           Wx_Class = 'wxStaticText'
@@ -322,7 +322,7 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
         object WxScrollBar3: TWxScrollBar
-          Left = 95
+          Left = 128
           Top = 6
           Width = 150
           Height = 17
@@ -355,10 +355,10 @@ object frmNewForm: TfrmNewForm
         end
       end
       object WxBoxSizer6: TWxBoxSizer
-        Left = 93
+        Left = 121
         Top = 157
-        Width = 110
-        Height = 87
+        Width = 104
+        Height = 69
         TabOrder = 4
         Orientation = wxVertical
         Wx_Class = 'wxBoxSizer'
@@ -366,8 +366,8 @@ object frmNewForm: TfrmNewForm
         Wx_IDName = 'ID_WXBOXSIZER6'
         Wx_IDValue = 1016
         object WxStaticText4: TWxStaticText
-          Left = 8
-          Top = 5
+          Left = 5
+          Top = 2
           Width = 93
           Height = 19
           Caption = #346'rodek obrotu z: '
@@ -381,6 +381,7 @@ object frmNewForm: TfrmNewForm
           Wx_IDName = 'ID_WXSTATICTEXT4'
           Wx_IDValue = 1017
           Wx_LabelStyle = []
+          Wx_Border = 2
           Wx_PaneCaption = 'WxStaticText4'
           Wx_PaneName = 'WxStaticText4_Pane'
           Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
@@ -399,8 +400,8 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
         object WxEdit1: TWxEdit
-          Left = 5
-          Top = 34
+          Left = 2
+          Top = 25
           Width = 100
           Height = 19
           BevelInner = bvNone
@@ -417,6 +418,7 @@ object frmNewForm: TfrmNewForm
           Wx_Hidden = False
           Wx_IDName = 'ID_WXEDIT1'
           Wx_IDValue = 1018
+          Wx_Border = 2
           Wx_MaxLength = 5
           Wx_PaneCaption = 'WxEdit1'
           Wx_PaneName = 'WxEdit1_Pane'
@@ -436,8 +438,8 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
         object WxEdit2: TWxEdit
-          Left = 5
-          Top = 63
+          Left = 2
+          Top = 48
           Width = 100
           Height = 19
           BevelInner = bvNone
@@ -454,6 +456,7 @@ object frmNewForm: TfrmNewForm
           Wx_Hidden = False
           Wx_IDName = 'ID_WXEDIT2'
           Wx_IDValue = 1019
+          Wx_Border = 2
           Wx_MaxLength = 0
           Wx_PaneCaption = 'WxEdit2'
           Wx_PaneName = 'WxEdit2_Pane'
@@ -474,9 +477,9 @@ object frmNewForm: TfrmNewForm
         end
       end
       object WxBoxSizer7: TWxBoxSizer
-        Left = 5
-        Top = 254
-        Width = 287
+        Left = 12
+        Top = 236
+        Width = 323
         Height = 29
         TabOrder = 5
         Wx_Class = 'wxBoxSizer'
@@ -486,9 +489,9 @@ object frmNewForm: TfrmNewForm
         object WxStaticText5: TWxStaticText
           Left = 5
           Top = 5
-          Width = 117
+          Width = 153
           Height = 19
-          Caption = ' Przechylenie x:           '
+          Caption = ' Przechylenie x:                       '
           TabOrder = 0
           Wx_BGColor = clBlack
           Wx_Class = 'wxStaticText'
@@ -517,7 +520,7 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
         object WxScrollBar4: TWxScrollBar
-          Left = 132
+          Left = 168
           Top = 6
           Width = 150
           Height = 17
@@ -550,9 +553,9 @@ object frmNewForm: TfrmNewForm
         end
       end
       object WxBoxSizer8: TWxBoxSizer
-        Left = 7
-        Top = 293
-        Width = 282
+        Left = 14
+        Top = 275
+        Width = 318
         Height = 29
         TabOrder = 6
         Wx_Class = 'wxBoxSizer'
@@ -562,9 +565,9 @@ object frmNewForm: TfrmNewForm
         object WxStaticText6: TWxStaticText
           Left = 5
           Top = 5
-          Width = 112
+          Width = 148
           Height = 19
-          Caption = 'Przechylenie y:          '
+          Caption = 'Przechylenie y:                      '
           TabOrder = 0
           Wx_BGColor = clBlack
           Wx_Class = 'wxStaticText'
@@ -593,7 +596,7 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
         object WxScrollBar5: TWxScrollBar
-          Left = 127
+          Left = 163
           Top = 6
           Width = 150
           Height = 17
@@ -626,9 +629,9 @@ object frmNewForm: TfrmNewForm
         end
       end
       object WxBoxSizer9: TWxBoxSizer
-        Left = 19
-        Top = 332
-        Width = 259
+        Left = 5
+        Top = 314
+        Width = 343
         Height = 29
         TabOrder = 7
         Wx_Class = 'wxBoxSizer'
@@ -639,9 +642,9 @@ object frmNewForm: TfrmNewForm
         object WxStaticText7: TWxStaticText
           Left = 5
           Top = 5
-          Width = 89
+          Width = 173
           Height = 19
-          Caption = 'P/B k:                  '
+          Caption = 'P/B k:                                              '
           TabOrder = 0
           Wx_BGColor = clBlack
           Wx_Class = 'wxStaticText'
@@ -671,7 +674,7 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
         object WxScrollBar6: TWxScrollBar
-          Left = 104
+          Left = 188
           Top = 6
           Width = 150
           Height = 17
@@ -703,38 +706,36 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
       end
-      object WxStaticBoxSizer1: TWxStaticBoxSizer
-        Left = 91
-        Top = 371
-        Width = 173
-        Height = 55
+      object WxStaticBoxSizer2: TWxStaticBoxSizer
+        Left = 119
+        Top = 353
+        Width = 108
+        Height = 93
         TabOrder = 8
+        Orientation = wxVertical
         Wx_Class = 'wxStaticBoxSizer'
         Wx_ControlOrientation = wxControlVertical
-        Wx_IDName = 'ID_WXSTATICBOXSIZER1'
-        Wx_IDValue = 1032
-        object WxButton3: TWxButton
-          Left = 10
-          Top = 20
-          Width = 75
-          Height = 25
-          Caption = 'Zapami'#281'taj'
+        Wx_IDName = 'ID_WXSTATICBOXSIZER2'
+        Wx_IDValue = 1035
+        object WxStaticText8: TWxStaticText
+          Left = 7
+          Top = 17
+          Width = 94
+          Height = 19
+          Caption = #346'rodek operacji:  '
           TabOrder = 1
-          Wx_BKColor = clBlack
-          Wx_ButtonStyle = []
-          Wx_Class = 'wxButton'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
           Wx_ControlOrientation = wxControlVertical
-          Wx_Default = False
-          Wx_EventList.Strings = (
-            'EVT_BUTTON:OnClick'
-            'EVT_UPDATE_UI:OnUpdateUI')
           Wx_FGColor = clBlack
           Wx_GeneralStyle = []
           Wx_Hidden = False
-          Wx_IDName = 'ID_WXBUTTON3'
-          Wx_IDValue = 1033
-          Wx_PaneCaption = 'WxButton3'
-          Wx_PaneName = 'WxButton3_Pane'
+          Wx_IDName = 'ID_WXSTATICTEXT8'
+          Wx_IDValue = 1038
+          Wx_LabelStyle = []
+          Wx_Border = 2
+          Wx_PaneCaption = 'WxStaticText8'
+          Wx_PaneName = 'WxStaticText8_Pane'
           Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
           Wx_Aui_Dockable_Direction = []
           Wx_Aui_Pane_Style = []
@@ -750,13 +751,100 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_X_Pos = 0
           Wx_Floating_Y_Pos = 0
         end
-        object WxButton2: TWxButton
-          Left = 95
-          Top = 20
-          Width = 68
-          Height = 24
-          Caption = 'Zapisz'
+        object WxEdit3: TWxEdit
+          Left = 19
+          Top = 41
+          Width = 70
+          Height = 19
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          AutoSize = False
           TabOrder = 2
+          Text = '0'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxTextCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_EditStyle = []
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_WXEDIT3'
+          Wx_IDValue = 1039
+          Wx_Border = 3
+          Wx_MaxLength = 0
+          Wx_PaneCaption = 'WxEdit3'
+          Wx_PaneName = 'WxEdit3_Pane'
+          Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
+          Wx_Aui_Dockable_Direction = []
+          Wx_Aui_Pane_Style = []
+          Wx_Aui_Pane_Buttons = []
+          Wx_BestSize_Height = 0
+          Wx_BestSize_Width = 0
+          Wx_MinSize_Height = 0
+          Wx_MinSize_Width = 0
+          Wx_MaxSize_Height = 0
+          Wx_MaxSize_Width = 0
+          Wx_Floating_Height = 0
+          Wx_Floating_Width = 0
+          Wx_Floating_X_Pos = 0
+          Wx_Floating_Y_Pos = 0
+        end
+        object WxEdit4: TWxEdit
+          Left = 19
+          Top = 66
+          Width = 70
+          Height = 19
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          AutoSize = False
+          TabOrder = 3
+          Text = '0'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxTextCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_EditStyle = []
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_WXEDIT4'
+          Wx_IDValue = 1040
+          Wx_Border = 3
+          Wx_MaxLength = 0
+          Wx_PaneCaption = 'WxEdit4'
+          Wx_PaneName = 'WxEdit4_Pane'
+          Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
+          Wx_Aui_Dockable_Direction = []
+          Wx_Aui_Pane_Style = []
+          Wx_Aui_Pane_Buttons = []
+          Wx_BestSize_Height = 0
+          Wx_BestSize_Width = 0
+          Wx_MinSize_Height = 0
+          Wx_MinSize_Width = 0
+          Wx_MaxSize_Height = 0
+          Wx_MaxSize_Width = 0
+          Wx_Floating_Height = 0
+          Wx_Floating_Width = 0
+          Wx_Floating_X_Pos = 0
+          Wx_Floating_Y_Pos = 0
+        end
+      end
+      object WxBoxSizer10: TWxBoxSizer
+        Left = 93
+        Top = 456
+        Width = 160
+        Height = 35
+        TabOrder = 9
+        Wx_Class = 'wxBoxSizer'
+        Wx_ControlOrientation = wxControlVertical
+        Wx_IDName = 'ID_WXBOXSIZER10'
+        Wx_IDValue = 1045
+        object WxButton2: TWxButton
+          Left = 5
+          Top = 5
+          Width = 70
+          Height = 25
+          Caption = 'Zapami'#281'taj'
+          TabOrder = 0
           Wx_BKColor = clBlack
           Wx_ButtonStyle = []
           Wx_Class = 'wxButton'
@@ -769,9 +857,46 @@ object frmNewForm: TfrmNewForm
           Wx_GeneralStyle = []
           Wx_Hidden = False
           Wx_IDName = 'ID_WXBUTTON2'
-          Wx_IDValue = 1034
+          Wx_IDValue = 1046
           Wx_PaneCaption = 'WxButton2'
           Wx_PaneName = 'WxButton2_Pane'
+          Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
+          Wx_Aui_Dockable_Direction = []
+          Wx_Aui_Pane_Style = []
+          Wx_Aui_Pane_Buttons = []
+          Wx_BestSize_Height = 0
+          Wx_BestSize_Width = 0
+          Wx_MinSize_Height = 0
+          Wx_MinSize_Width = 0
+          Wx_MaxSize_Height = 0
+          Wx_MaxSize_Width = 0
+          Wx_Floating_Height = 0
+          Wx_Floating_Width = 0
+          Wx_Floating_X_Pos = 0
+          Wx_Floating_Y_Pos = 0
+        end
+        object WxButton3: TWxButton
+          Left = 85
+          Top = 5
+          Width = 70
+          Height = 25
+          Caption = 'Zapisz'
+          TabOrder = 1
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = False
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_WXBUTTON3'
+          Wx_IDValue = 1047
+          Wx_PaneCaption = 'WxButton3'
+          Wx_PaneName = 'WxButton3_Pane'
           Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
           Wx_Aui_Dockable_Direction = []
           Wx_Aui_Pane_Style = []

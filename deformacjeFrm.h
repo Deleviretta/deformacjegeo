@@ -61,6 +61,7 @@ class deformacjeFrm : public wxFrame
 		virtual ~deformacjeFrm();
 		void WxButton3Click(wxCommandEvent& event);
 		void WxEdit1Enter(wxCommandEvent& event);
+		void WxButton3Click0(wxCommandEvent& event);
 		
 		
 	private:
@@ -68,9 +69,13 @@ class deformacjeFrm : public wxFrame
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
-		wxButton *WxButton2;
 		wxButton *WxButton3;
-		wxStaticBoxSizer *WxStaticBoxSizer1;
+		wxButton *WxButton2;
+		wxBoxSizer *WxBoxSizer10;
+		wxTextCtrl *WxEdit4;
+		wxTextCtrl *WxEdit3;
+		wxStaticText *WxStaticText8;
+		wxStaticBoxSizer *WxStaticBoxSizer2;
 		wxScrollBar *WxScrollBar6;
 		wxStaticText *WxStaticText7;
 		wxBoxSizer *WxBoxSizer9;
@@ -105,6 +110,8 @@ class deformacjeFrm : public wxFrame
 		
 		void WxEdit1E(wxCommandEvent& event);
 		void WxEdit2E(wxCommandEvent& event);
+		void WxEdit3E(wxCommandEvent& event);
+		void WxEdit4E(wxCommandEvent& event);
 		void UpdateDrawing(wxUpdateUIEvent& event);
 		void drawing();
 		void RotationX(wxScrollEvent& event);
@@ -125,8 +132,11 @@ class deformacjeFrm : public wxFrame
 		enum
 		{
 			////GUI Enum Control ID Start
-			ID_WXBUTTON2 = 1034,
-			ID_WXBUTTON3 = 1033,
+			ID_WXBUTTON3 = 1047,
+			ID_WXBUTTON2 = 1046,
+			ID_WXEDIT4 = 1040,
+			ID_WXEDIT3 = 1039,
+			ID_WXSTATICTEXT8 = 1038,
 			ID_WXSCROLLBAR6 = 1029,
 			ID_WXSTATICTEXT7 = 1028,
 			ID_WXSCROLLBAR5 = 1025,
@@ -156,6 +166,8 @@ class deformacjeFrm : public wxFrame
 		wxClientDC *dc;
 		int *xPoint;
 		int *yPoint; 
+		int *xPointB;
+		int *yPointB; 
 		bool **tab;
 		int option;
 		
