@@ -44,7 +44,7 @@ object frmNewForm: TfrmNewForm
     Wx_IDValue = 1001
     object WxPanel1: TWxPanel
       Left = 5
-      Top = 38
+      Top = 20
       Width = 400
       Height = 400
       TabOrder = 0
@@ -80,7 +80,7 @@ object frmNewForm: TfrmNewForm
       Left = 415
       Top = 5
       Width = 297
-      Height = 466
+      Height = 431
       TabOrder = 1
       Orientation = wxVertical
       Wx_Class = 'wxBoxSizer'
@@ -626,7 +626,7 @@ object frmNewForm: TfrmNewForm
         end
       end
       object WxBoxSizer9: TWxBoxSizer
-        Left = 23
+        Left = 19
         Top = 332
         Width = 259
         Height = 29
@@ -703,49 +703,12 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_Y_Pos = 0
         end
       end
-      object WxButton2: TWxButton
-        Left = 111
-        Top = 371
-        Width = 75
-        Height = 25
-        Caption = 'Zapisz'
-        TabOrder = 8
-        Wx_BKColor = clBlack
-        Wx_ButtonStyle = []
-        Wx_Class = 'wxButton'
-        Wx_ControlOrientation = wxControlVertical
-        Wx_Default = False
-        Wx_EventList.Strings = (
-          'EVT_BUTTON:OnClick'
-          'EVT_UPDATE_UI:OnUpdateUI')
-        Wx_FGColor = clBlack
-        Wx_GeneralStyle = []
-        Wx_Hidden = False
-        Wx_IDName = 'ID_WXBUTTON2'
-        Wx_IDValue = 1030
-        Wx_PaneCaption = 'WxButton2'
-        Wx_PaneName = 'WxButton2_Pane'
-        Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
-        Wx_Aui_Dockable_Direction = []
-        Wx_Aui_Pane_Style = []
-        Wx_Aui_Pane_Buttons = []
-        Wx_BestSize_Height = 0
-        Wx_BestSize_Width = 0
-        Wx_MinSize_Height = 0
-        Wx_MinSize_Width = 0
-        Wx_MaxSize_Height = 0
-        Wx_MaxSize_Width = 0
-        Wx_Floating_Height = 0
-        Wx_Floating_Width = 0
-        Wx_Floating_X_Pos = 0
-        Wx_Floating_Y_Pos = 0
-      end
       object WxStaticBoxSizer1: TWxStaticBoxSizer
-        Left = 58
-        Top = 406
-        Width = 180
+        Left = 91
+        Top = 371
+        Width = 173
         Height = 55
-        TabOrder = 9
+        TabOrder = 8
         Wx_Class = 'wxStaticBoxSizer'
         Wx_ControlOrientation = wxControlVertical
         Wx_IDName = 'ID_WXSTATICBOXSIZER1'
@@ -787,12 +750,12 @@ object frmNewForm: TfrmNewForm
           Wx_Floating_X_Pos = 0
           Wx_Floating_Y_Pos = 0
         end
-        object WxButton4: TWxButton
+        object WxButton2: TWxButton
           Left = 95
           Top = 20
-          Width = 75
-          Height = 25
-          Caption = 'Reset'
+          Width = 68
+          Height = 24
+          Caption = 'Zapisz'
           TabOrder = 2
           Wx_BKColor = clBlack
           Wx_ButtonStyle = []
@@ -805,10 +768,10 @@ object frmNewForm: TfrmNewForm
           Wx_FGColor = clBlack
           Wx_GeneralStyle = []
           Wx_Hidden = False
-          Wx_IDName = 'ID_WXBUTTON4'
+          Wx_IDName = 'ID_WXBUTTON2'
           Wx_IDValue = 1034
-          Wx_PaneCaption = 'WxButton4'
-          Wx_PaneName = 'WxButton4_Pane'
+          Wx_PaneCaption = 'WxButton2'
+          Wx_PaneName = 'WxButton2_Pane'
           Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
           Wx_Aui_Dockable_Direction = []
           Wx_Aui_Pane_Style = []

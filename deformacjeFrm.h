@@ -68,10 +68,9 @@ class deformacjeFrm : public wxFrame
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
-		wxButton *WxButton4;
+		wxButton *WxButton2;
 		wxButton *WxButton3;
 		wxStaticBoxSizer *WxStaticBoxSizer1;
-		wxButton *WxButton2;
 		wxScrollBar *WxScrollBar6;
 		wxStaticText *WxStaticText7;
 		wxBoxSizer *WxBoxSizer9;
@@ -126,9 +125,8 @@ class deformacjeFrm : public wxFrame
 		enum
 		{
 			////GUI Enum Control ID Start
-			ID_WXBUTTON4 = 1034,
+			ID_WXBUTTON2 = 1034,
 			ID_WXBUTTON3 = 1033,
-			ID_WXBUTTON2 = 1030,
 			ID_WXSCROLLBAR6 = 1029,
 			ID_WXSTATICTEXT7 = 1028,
 			ID_WXSCROLLBAR5 = 1025,

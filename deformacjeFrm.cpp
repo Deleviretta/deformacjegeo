@@ -33,6 +33,7 @@ BEGIN_EVENT_TABLE(deformacjeFrm,wxFrame)
 	//	EVT_UPDATE_UI(ID_WXPANEL1,deformacjeFrm::UpdateDrawing)
 	EVT_BUTTON(ID_WXBUTTON1,deformacjeFrm::Load)
 	EVT_BUTTON(ID_WXBUTTON2,deformacjeFrm::Saving)
+		EVT_BUTTON(ID_WXBUTTON2,deformacjeFrm::Saving)
 	//	EVT_COMMAND_SCROLL_THUMBRELEASE(ID_WXSCROLLBAR1,deformacjeFrm::ScrollThumbRelease1)
 	//	EVT_COMMAND_SCROLL_THUMBRELEASE(ID_WXSCROLLBAR2,deformacjeFrm::ScrollThumbRelease1)
 	//EVT_COMMAND_SCROLL_THUMBRELEASE(ID_WXSCROLLBAR3,deformacjeFrm::ScrollThumbRelease1)
@@ -46,7 +47,6 @@ BEGIN_EVENT_TABLE(deformacjeFrm,wxFrame)
 	EVT_COMMAND_SCROLL(ID_WXSCROLLBAR5,deformacjeFrm::SkewY)
 	EVT_COMMAND_SCROLL(ID_WXSCROLLBAR6,deformacjeFrm::BarrelPincushion)
 	EVT_BUTTON(ID_WXBUTTON3,deformacjeFrm::Zapamietaj)
-	EVT_BUTTON(ID_WXBUTTON4,deformacjeFrm::Reset)
 	EVT_TEXT_ENTER(ID_WXEDIT1,deformacjeFrm::WxEdit1E)
 	EVT_TEXT_ENTER(ID_WXEDIT2,deformacjeFrm::WxEdit2E)
 	EVT_CLOSE(deformacjeFrm::OnClose)
@@ -79,7 +79,7 @@ void deformacjeFrm::CreateGUIControls()
 	this->SetSizer(WxBoxSizer1);
 	this->SetAutoLayout(true);
 
-	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 38), wxSize(400, 400));
+	WxPanel1 = new wxPanel(this, ID_WXPANEL1, wxPoint(5, 20), wxSize(400, 400));
 	WxBoxSizer1->Add(WxPanel1, 0, wxALIGN_CENTER | wxALL, 5);
 
 	WxBoxSizer2 = new wxBoxSizer(wxVERTICAL);
@@ -161,9 +161,6 @@ void deformacjeFrm::CreateGUIControls()
 	WxScrollBar6->Enable(false);
 	WxBoxSizer9->Add(WxScrollBar6, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxButton2 = new wxButton(this, ID_WXBUTTON2, _("Zapisz"), wxPoint(111, 371), wxSize(75, 25), 0, wxDefaultValidator, _("WxButton2"));
-	WxBoxSizer2->Add(WxButton2, 0, wxALIGN_CENTER | wxALL, 5);
-
 	wxStaticBox* WxStaticBoxSizer1_StaticBoxObj = new wxStaticBox(this, wxID_ANY, _(""));
 	WxStaticBoxSizer1 = new wxStaticBoxSizer(WxStaticBoxSizer1_StaticBoxObj, wxHORIZONTAL);
 	WxBoxSizer2->Add(WxStaticBoxSizer1, 0, wxALIGN_CENTER | wxALL, 5);
@@ -171,8 +168,8 @@ void deformacjeFrm::CreateGUIControls()
 	WxButton3 = new wxButton(this, ID_WXBUTTON3, _("Zapamiêtaj"), wxPoint(10, 20), wxSize(75, 25), 0, wxDefaultValidator, _("WxButton3"));
 	WxStaticBoxSizer1->Add(WxButton3, 0, wxALIGN_CENTER | wxALL, 5);
 
-	WxButton4 = new wxButton(this, ID_WXBUTTON4, _("Reset"), wxPoint(95, 20), wxSize(75, 25), 0, wxDefaultValidator, _("WxButton4"));
-	WxStaticBoxSizer1->Add(WxButton4, 0, wxALIGN_CENTER | wxALL, 5);
+	WxButton2 = new wxButton(this, ID_WXBUTTON2, _("Zapisz"), wxPoint(95, 20), wxSize(68, 24), 0, wxDefaultValidator, _("WxButton2"));
+	WxStaticBoxSizer1->Add(WxButton2, 0, wxALIGN_CENTER | wxALL, 5);
 
 	SetTitle(_("deformacje"));
 	SetIcon(wxNullIcon);
@@ -624,10 +621,7 @@ void deformacjeFrm::Zapamietaj(wxCommandEvent& event)
 	
 	
 }
-void deformacjeFrm::Reset(wxCommandEvent& event)
-{
-	img = Img_Cpy.Copy();
-}
+
 
 /*
  * WxEdit1Enter
